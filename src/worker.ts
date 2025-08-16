@@ -59,10 +59,7 @@ const worker = new Worker(
 
     await updateStatus(id, STATUS.DONE);
 
-    const docMetaData = await getDocument(id);
-    console.log('Document metadata:', docMetaData);
-
-    console.log(`Document ${id} processed`);
+    console.log(`Document ${id} done`);
   },
   {
     connection: redisClient,
