@@ -54,6 +54,9 @@ Env vars:
 
 ## API
 
+- GET /health
+  - returns: { success, redis }
+
 - POST /upload
   - form-data field: document (file)
   - returns: { documentId, status, createdAt }

@@ -3,8 +3,23 @@ import { upload } from '../lib/upload';
 import { queue } from '../queue';
 import { STATUS } from '../lib/status';
 import { saveFile, listDocuments, getDocument } from '../services/storage';
+import { redisClient } from '../lib/redisClient';
 
 const router = express.Router();
+
+/**
+ * @route GET /health
+ * @summary Health check endpoint
+ */
+router.get('/health', async (_req, res) => {
+  try {
+    await redisClient.ping();
+    return res.json({ success: true, redis: 'ok' });
+  } catch (err) {
+    const errorMsg = err instanceof Error ? err.message : String(err);
+    return res.status(500).json({ success: false, redis: 'error', error: errorMsg });
+  }
+});
 
 /**
  * @route POST /upload
