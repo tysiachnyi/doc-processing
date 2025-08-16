@@ -1,8 +1,12 @@
 node_modules/
 dist/
 build/
+.tsbuildinfo
 .env
 .DS_Store
 npm-debug.log
 yarn-error.log
 .vscode/
+storage/
+*.log
+assets/

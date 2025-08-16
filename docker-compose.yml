@@ -1,0 +1,30 @@
+services:
+  redis:
+    image: redis:7
+    restart: unless-stopped
+    ports:
+      - '6379:6379'
+  api:
+    build: .
+    restart: unless-stopped
+    environment:
+      - PORT=3000
+      - REDIS_URL=redis://redis:6379
+      - STORAGE_DIR=/app/storage
+    volumes:
+      - ./storage:/app/storage
+    depends_on:
+      - redis
+    ports:
+      - '3000:3000'
+  worker:
+    build: .
+    command: node dist/worker.js
+    restart: unless-stopped
+    environment:
+      - REDIS_URL=redis://redis:6379
+      - STORAGE_DIR=/app/storage
+    volumes:
+      - ./storage:/app/storage
+    depends_on:
+      - redis
