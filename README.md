@@ -6,7 +6,7 @@ Tech stack: Node.js, Express, TypeScript, Redis, BullMQ, Zod, Docker.
 
 - Upload a document (PDF, JPEG, PNG) via HTTP.
 - Enqueue async processing with BullMQ (OCR -> Extract -> Validate -> Persist).
-- Maintain per-document status in Redis: processing, processed, validated, validation_failed, done, failed.
+- Maintain per-document status in Redis: uploaded, processing, processed, validated, validation_failed, done, failed.
 - Persist raw file on disk and metadata in Redis.
 
 ## Quick start
