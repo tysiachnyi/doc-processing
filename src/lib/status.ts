@@ -1,4 +1,5 @@
 export const STATUS = {
+  UPLOADED: 'uploaded',
   VALIDATED: 'validated',
   DONE: 'done',
   VALIDATION_FAILED: 'validation_failed',
